@@ -16,10 +16,6 @@ function returnFirstArgument(arg) {
   return arg;
 }
 
-returnFirstArgument(10);
-returnFirstArgument('привет');
-console.log(returnFirstArgument('привет'));
-
 /*
  Задание 2:
 
@@ -36,13 +32,8 @@ console.log(returnFirstArgument('привет'));
  */
 function sumWithDefaults(a, b = 100) {
   const result = a + b;
-  console.log(result);
   return result;
 }
-
-sumWithDefaults(10);
-sumWithDefaults(10, 20);
-sumWithDefaults(2, 4);
 
 /*
  Задание 3:
@@ -53,13 +44,8 @@ sumWithDefaults(2, 4);
    returnFnResult(() => 'привет') вернет 'привет'
  */
 function returnFnResult(fn) {
-  const result = fn();
-  console.log(result);
-  return result;
+  return fn();
 }
-
-returnFnResult(() => 'привет'); //вернет 'привет'
-
 /*
  Задание 4:
 
@@ -74,17 +60,11 @@ returnFnResult(() => 'привет'); //вернет 'привет'
    console.log(f()); // выведет 13
  */
 
-const returnCounter = function (num) {
+const returnCounter = function (num = 0) {
   return function () {
     return (num += 1);
   };
 };
-
-const f = returnCounter(10);
-
-console.log(f()); // выведет 11
-console.log(f()); // выведет 12
-console.log(f()); // выведет 13
 
 /*
  Задание 5 *:
@@ -97,9 +77,8 @@ console.log(f()); // выведет 13
  */
 function returnArgumentsArray() {
   const newArr = [...arguments];
-  console.log(newArr);
+  return newArr;
 }
-returnArgumentsArray(1, 2, 3, 6, 10);
 
 /*
  Задание 6 *:
@@ -118,8 +97,8 @@ returnArgumentsArray(1, 2, 3, 6, 10);
  */
 
 function bindFunction(fn, ...args) {
-  return function (nums) {
-    return nums;
+  return function () {
+    return fn(...args);
   };
 }
 
