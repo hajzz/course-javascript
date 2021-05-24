@@ -46,6 +46,7 @@ function sumWithDefaults(a, b = 100) {
 function returnFnResult(fn) {
   return fn();
 }
+
 /*
  Задание 4:
 
@@ -102,12 +103,7 @@ function bindFunction(fn, ...args) {
   };
 }
 
-function sum(a, b) {
-  return a + b;
-}
-const newSum = bindFunction(sum, 2, 4);
 
-console.log(newSum());
 
 export {
   returnFirstArgument,
