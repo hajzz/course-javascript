@@ -42,7 +42,25 @@ function map(array, fn) {
  Пример:
    reduce([1, 2, 3], (all, current) => all + current) // 6
  */
-function reduce(array, fn, initial) {}
+
+function reduce(array, fn, initial = 0) {
+  const acc = initial;
+  let current;
+
+  for (let i = 0; i < array.length; i++) {
+    current += array;
+  console.log(current);
+
+  }
+
+  // console.log(current);
+
+  fn(acc, current);
+}
+
+reduce([1, 2, 3], (acc, current) => acc + current);
+
+console.log(reduce([1, 2, 3], (acc, current) => acc + current));
 
 /*
  Задание 4:
@@ -53,16 +71,13 @@ function reduce(array, fn, initial) {}
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 
-
 function upperProps(obj) {
   const objKeys = Object.keys(obj);
-  const newArr = objKeys.map(names =>{
+  const newArr = objKeys.map((names) => {
     return names.toUpperCase();
-  })
+  });
   return newArr;
 }
-
-
 
 /*
  Задание 5 *:
