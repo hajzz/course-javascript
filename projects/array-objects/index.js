@@ -88,12 +88,12 @@ function upperProps(obj) {
  */
 
 function createProxy(obj) {
-  const validator = {
+  const checker = {
     set: function (obj, prop, value) {
       obj[prop] = value ** 2;
     },
   };
-  return new Proxy(obj, validator);
+  return new Proxy(obj, checker);
 }
 
 export { forEach, map, reduce, upperProps, createProxy };
