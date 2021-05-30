@@ -43,24 +43,20 @@ function map(array, fn) {
    reduce([1, 2, 3], (all, current) => all + current) // 6
  */
 
-function reduce(array, fn, initial = 0) {
-  const acc = initial;
-  let current;
-
-  for (let i = 0; i < array.length; i++) {
-    current += array;
-  console.log(current);
-
+function reduce(array, fn, initial) {
+  let acc, arrayIndex;
+  if (initial) {
+    acc = initial;
+    arrayIndex = 0;
+  } else {
+    acc = array[0];
+    arrayIndex = 1;
   }
-
-  // console.log(current);
-
-  fn(acc, current);
+  for (let i = arrayIndex; i < array.length; i++) {
+    acc = fn(acc, array[i], i, array);
+  }
+  return acc;
 }
-
-reduce([1, 2, 3], (acc, current) => acc + current);
-
-console.log(reduce([1, 2, 3], (acc, current) => acc + current));
 
 /*
  Задание 4:
@@ -90,6 +86,14 @@ function upperProps(obj) {
    obj.foo = 2;
    console.log(obj.foo); // 4
  */
-function createProxy(obj) {}
+
+function createProxy(obj) {
+  const validator = {
+    set: function (obj, prop, value) {
+      obj[prop] = value ** 2;
+    },
+  };
+  return new Proxy(obj, validator);
+}
 
 export { forEach, map, reduce, upperProps, createProxy };
