@@ -16,7 +16,32 @@
    isAllTrue([1, 2, 3, 4, 5], n => n < 10) // вернет true
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
-function isAllTrue(array, fn) {}
+
+function isAllTrue(array, fn) {
+  let result;
+  if(array.length === 0){
+    throw new Error('empty array')
+  }else if(array.constructor.name !== "Array"){
+    throw new Error('empty array')
+  }else if(typeof fn !== 'function'){
+    throw new Error('fn is not a function')
+
+  }
+  try{
+    for (let i = 0; i < array.length; i++) {
+      result = fn(array[i])
+      if(!result){
+        result = false;
+        break;
+      }
+    }
+}catch(e){
+  console.log(e.message)
+}
+return result;
+
+}
+
 
 /*
  Задание 2:
