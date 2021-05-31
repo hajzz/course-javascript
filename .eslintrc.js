@@ -14,7 +14,7 @@ module.exports = {
     node: true,
   },
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': 'off', //turned off by me
     'no-undef': 'error',
     'no-extra-semi': 'error',
     'no-template-curly-in-string': 'error',
@@ -26,8 +26,8 @@ module.exports = {
     'global-require': 'off',
     'brace-style': 'off',
     'eol-last': 'error',
-    'no-extra-bind': 'warn',
-    'no-process-exit': 'warn',
+    'no-extra-bind': 'off', //turned off by me
+    'no-process-exit': 'off', //turned off by me
     'no-use-before-define': 'off',
     'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
     'no-unsafe-negation': 'error',
