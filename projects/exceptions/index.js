@@ -19,29 +19,26 @@
 
 function isAllTrue(array, fn) {
   let result;
-  if(array.length === 0){
-    throw new Error('empty array')
-  }else if(array.constructor.name !== "Array"){
-    throw new Error('empty array')
-  }else if(typeof fn !== 'function'){
-    throw new Error('fn is not a function')
-
+  if (array.length === 0) {
+    throw new Error('empty array');
+  } else if (array.constructor.name !== 'Array') {
+    throw new Error('empty array');
+  } else if (typeof fn !== 'function') {
+    throw new Error('fn is not a function');
   }
-  try{
+  try {
     for (let i = 0; i < array.length; i++) {
-      result = fn(array[i])
-      if(!result){
+      result = fn(array[i]);
+      if (!result) {
         result = false;
         break;
       }
     }
-}catch(e){
-  console.log(e.message)
+  } catch (e) {
+    console.log(e.message);
+  }
+  return result;
 }
-return result;
-
-}
-
 
 /*
  Задание 2:
@@ -59,7 +56,28 @@ return result;
    isSomeTrue([1, 2, 30, 4, 5], n => n > 20) // вернет true
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false
  */
-function isSomeTrue(array, fn) {}
+
+function isSomeTrue(array, fn) {
+  let result = false;
+  if (array.length === 0) {
+    throw new Error('empty array');
+  } else if (array.constructor.name !== 'Array') {
+    throw new Error('empty array');
+  } else if (typeof fn !== 'function') {
+    throw new Error('fn is not a function');
+  }
+  try {
+    for (let i = 0; i < array.length || result === true; i++) {
+      result = fn(array[i]);
+      if (result) {
+        return result;
+      }
+    }
+  } catch (e) {
+    console.log(e.message);
+  }
+  return result;
+}
 
 /*
  Задание 3:
@@ -72,7 +90,21 @@ function isSomeTrue(array, fn) {}
  3.3: Необходимо выбрасывать исключение в случаях:
    - fn не является функцией (с текстом "fn is not a function")
  */
-function returnBadArguments(fn, ...args) {}
+function returnBadArguments(fn, ...args) {
+  if (typeof fn !== 'function') {
+    throw new Error('fn is not a function');
+  }
+
+  const exception = [];
+  for (let i = 0; i < args.length; i++) {
+    try {
+      fn(args[i]);
+    } catch {
+      exception.push(args[i]);
+    }
+  }
+  return exception;
+}
 
 /*
  Задание 4:
@@ -91,7 +123,48 @@ function returnBadArguments(fn, ...args) {}
    - number не является числом (с текстом "number is not a number")
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
-function calculator(number = 0) {}
+function calculator(number = 0) {
+  if (isNaN(number)) {
+    throw new Error('number is not a number');
+  }
+
+  return {
+    sum(...args) {
+      let result = number;
+      for (let i = 0; i < args.length; i++) {
+        result += args[i];
+      }
+      return result;
+    },
+
+    dif(...args) {
+      let result = number;
+      for (let i = 0; i < args.length; i++) {
+        result -= args[i];
+      }
+      return result;
+    },
+
+    div(...args) {
+      let result = number;
+      for (let i = 0; i < args.length; i++) {
+        if (args[i] === 0) {
+          throw new Error('division by 0');
+        }
+        result /= args[i];
+      }
+      return result;
+    },
+
+    mul(...args) {
+      let result = number;
+      for (let i = 0; i < args.length; i++) {
+        result *= args[i];
+      }
+      return result;
+    },
+  };
+}
 
 /* При решении задач, постарайтесь использовать отладчик */
 
