@@ -19,23 +19,17 @@
 
 function isAllTrue(array, fn) {
   let result;
-  if (array.length === 0) {
-    throw new Error('empty array');
-  } else if (array.constructor.name !== 'Array') {
+  if (array.length === 0 || array.constructor.name !== 'Array') {
     throw new Error('empty array');
   } else if (typeof fn !== 'function') {
     throw new Error('fn is not a function');
   }
-  try {
-    for (let i = 0; i < array.length; i++) {
-      result = fn(array[i]);
-      if (!result) {
-        result = false;
-        break;
-      }
+  for (let i = 0; i < array.length; i++) {
+    result = fn(array[i]);
+    if (!result) {
+      result = false;
+      break;
     }
-  } catch (e) {
-    console.log(e.message);
   }
   return result;
 }
@@ -59,22 +53,16 @@ function isAllTrue(array, fn) {
 
 function isSomeTrue(array, fn) {
   let result = false;
-  if (array.length === 0) {
-    throw new Error('empty array');
-  } else if (array.constructor.name !== 'Array') {
+  if (array.length === 0 || array.constructor.name !== 'Array') {
     throw new Error('empty array');
   } else if (typeof fn !== 'function') {
     throw new Error('fn is not a function');
   }
-  try {
-    for (let i = 0; i < array.length || result === true; i++) {
-      result = fn(array[i]);
-      if (result) {
-        return result;
-      }
+  for (let i = 0; i < array.length || result === true; i++) {
+    result = fn(array[i]);
+    if (result) {
+      return result;
     }
-  } catch (e) {
-    console.log(e.message);
   }
   return result;
 }
