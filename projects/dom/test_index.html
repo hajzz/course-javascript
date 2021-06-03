@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+
+<body>
+<span>
+    <div>
+     <b>привет</b>
+    </div>
+    <p>loftchool</p> !!!
+</span>
+    <script>
+function deleteTextNodesRecursive(where) {
+  for(const el of where.children){
+  // console.log(el.childNodes)
+  let nodes = el.childNodes
+  for(let i = 0; i < nodes.length; i++){
+    // console.log("for2")
+    if(nodes[i].nodeName === "#text"){
+      console.log("if")
+      nodes[i].remove()
+    }
+  }
+
+    deleteTextNodesRecursive(where.firstElementChild)
+
+  }
+}
+
+
+
+deleteTextNodesRecursive(document.body);
+// console.log(document.body);
+  </script>
+</body>
+
+</html>
